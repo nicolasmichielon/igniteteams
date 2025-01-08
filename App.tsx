@@ -8,7 +8,7 @@ import {
 import { Loading } from "@components/Loading";
 
 import theme from "./src/theme";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 import { Players } from "@screens/Players";
 
 export default function App() {
