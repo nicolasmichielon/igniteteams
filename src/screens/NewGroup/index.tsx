@@ -11,7 +11,8 @@ import {
 import { useState } from "react";
 import { groupCreate } from "@storage/group/groupCreate";
 import { AppError } from "@utils/AppError";
-import { Alert } from "react-native";
+import { Alert, KeyboardAvoidingView, Platform } from "react-native";
+import theme from "src/theme";
 
 export function NewGroup() {
   const [group, setGroup] = useState("");
@@ -37,20 +38,24 @@ export function NewGroup() {
   }
 
   return (
-    <Container>
-      <Header showBackButton></Header>
+    <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_600 }}
+      behavior={"padding"}
+    >
+      <Container>
+        <Header showBackButton></Header>
+        <Content>
+          <Icon />
+          <Highlight
+            title="Nova Turma"
+            subtitle="crie a turma para adicionar as pessoas"
+          />
 
-      <Content>
-        <Icon />
-        <Highlight
-          title="Nova Turma"
-          subtitle="crie a turma para adicionar as pessoas"
-        />
+          <Input placeholder="Nome da turma" onChangeText={setGroup} />
 
-        <Input placeholder="Nome da turma" onChangeText={setGroup} />
-
-        <Button title="Criar" style={{ marginTop: 20 }} onPress={handleNew} />
-      </Content>
-    </Container>
+          <Button title="Criar" style={{ marginTop: 20 }} onPress={handleNew} />
+        </Content>
+      </Container>
+    </KeyboardAvoidingView>
   );
 }
